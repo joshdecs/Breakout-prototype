@@ -1,0 +1,25 @@
+LICENCE:
+Cahier des charges:
+
+  Plateau:
+    rebond :
+    taille : fixe
+    mouvement : clavier
+    vitesse : fixe
+    forme: >= trois sections
+    
+  Balle(unique):
+    taille : fixe
+    vitesse : augmente avec le temps
+    angle de déport : aléatoire
+  Briques:
+    types : >= 3
+    dessin niveau à gérer
+    plusieurs niveaux
+    
+  Vies:
+  Score:
+  ...=+=°[{(MENU)}]°=+=...
+   
+
+input("Entrer un nombre en base 10 entre -127 et 128")
