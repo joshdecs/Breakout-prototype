@@ -82,14 +82,14 @@ def balle_deplacement():
         pyxel.text(vaisseau_x,vaisseau_y+10, 'Une vie de moins !', 7)
     # brique 
     elif pyxel.pget(x+xx, y+yy) == 10 :
-            yy = -yy
             pyxel.fill(x+xx, y+yy, 9 )
+            yy = -yy
     elif pyxel.pget(x+xx, y+yy) == 9 :
-            yy = -yy
             pyxel.fill(x+xx, y+yy, 8 )
-    elif pyxel.pget(x+xx, y+yy) == 8 :
             yy = -yy
+    elif pyxel.pget(x+xx, y+yy) == 8 :
             pyxel.fill(x+xx, y+yy, 0 )
+            yy = -yy
             score += 20
         
    
@@ -175,9 +175,10 @@ def draw():
 
         # briques
         #for brique in brique_liste:
-        #for u in range(8) :
-            #pyxel.rect(cox,coy, 20, 10, colorb)
-            #cox += 25
+        cox=50
+        for u in range(8) :
+            pyxel.rect(cox,coy, 20, 10, colorb)
+            cox += 25
             
     # sinon: GAME OVER
     else:
