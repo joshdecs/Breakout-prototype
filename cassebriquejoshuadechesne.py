@@ -1,4 +1,4 @@
-# on rajoute random
+# on rajoute bibliotheque random
 import pyxel, random
 
 # taille de la fenetre 128x128 pixels
