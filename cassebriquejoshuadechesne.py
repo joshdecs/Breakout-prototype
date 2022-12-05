@@ -111,15 +111,24 @@ def balle_deplacement():
             if brique[2] == 8 :
                 brique_liste[level].remove(brique)
                 if len(brique_liste[level]) % 6 == 0 :
-                    if xx < 0: xx -= 1
-                    else: xx += 1
-                    if yy < 0: yy -= 1
-                    else: yy += 1
+                    if xx < 0: 
+                      xx -= 1
+                      velocity += 1
+                    else: 
+                      xx += 1
+                      velocity += 1
+                    if yy < 0: 
+                      yy -= 1
+                      velocity += 1
+                    else: 
+                      yy += 1
+                      velocity += 1
 
                 if len(brique_liste[level]) == 0 :
                     level+=1
                     xx= -vb
                     yy= -vb
+                    velocity = 0
                     balle= False
             else  :
                 brique[2] -= 1
