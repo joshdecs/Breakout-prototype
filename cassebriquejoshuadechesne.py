@@ -182,6 +182,6 @@ def draw():
     # sinon: GAME OVER
     else:
 
-        pyxel.text(150,150, 'GAME OVER', 7)
+        pyxel.text(130,150, 'GAME OVER', 7)
 
 pyxel.run(update, draw)
