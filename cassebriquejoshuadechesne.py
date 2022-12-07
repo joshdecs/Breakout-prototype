@@ -68,7 +68,7 @@ def raquette_deplacement(x, y):
 
 
 def balle_deplacement():
-    global x, y, xx, yy, vies, balle , score , brique_liste , brique, vb, level
+    global x, y, xx, yy, vies, balle , score , brique_liste , brique, vb, level, velocity
     x += xx
     y += yy
     # Bord gauche
@@ -82,13 +82,13 @@ def balle_deplacement():
     elif x >= 300-r and xx >0:
         xx = -xx
     # dessus raquette
-    elif y >= raquette_y-r and y <= raquette_y+r and x >= raquette_x-r and x <= raquette_x+50+r :
+    elif y >= raquette_y-r and y <= raquette_y+r+20 and x >= raquette_x-r and x <= raquette_x+50+r and yy > 0:
         yy = -yy
     # raquette gauche
-    elif x >= raquette_x-50-r and x <= raquette_x+r and y >= raquette_y - r and y <= raquette_y + 20 - r and pyxel.pget(x+xx, y+yy) == 2 :
+    elif x >= raquette_x-50-r and x <= raquette_x+r and y >= raquette_y - r and y <= raquette_y + 40 - r and pyxel.pget(x+xx, y+yy) == 2 and yy > 0:
         yy = -yy
     # raquette droite
-    elif x >= raquette_x+50-r and x <= raquette_x+100+r and y >= raquette_y - r and y <= raquette_y + 20 - r and pyxel.pget(x+xx, y+yy) == 2 :
+    elif x >= raquette_x+50-r and x <= raquette_x+100+r and y >= raquette_y - r and y <= raquette_y + 40 - r and pyxel.pget(x+xx, y+yy) == 2 and yy > 0 :
         yy = -yy
     # bas
     elif y >= 300+r :
@@ -128,7 +128,7 @@ def balle_deplacement():
                     level+=1
                     xx= -vb
                     yy= -vb
-                    velocity = 0
+                    velocity = 5
                     balle= False
             else  :
                 brique[2] -= 1
@@ -140,7 +140,7 @@ def balle_deplacement():
 def update():
     """mise à jour des variables (30 fois par seconde)"""
 
-    global raquette_x, raquette_y, x, y, balle, brique_liste, vies , x0 , y0 , xx , yy, level
+    global raquette_x, raquette_y, x, y, balle, brique_liste, vies , x0 , y0 , xx , yy, level, velocity
 
     # mise à jour de la position du raquette
     raquette_x, raquette_y = raquette_deplacement(raquette_x, raquette_y)
