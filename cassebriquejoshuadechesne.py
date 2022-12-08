@@ -1,3 +1,6 @@
+# on rajoute bibliotheque random
+import pyxel, random
+
 # taille de la fenetre 128x128 pixels
 # ne pas modifier
 pyxel.init(300, 300, title="Josh")
@@ -59,7 +62,9 @@ brique_liste = [ [[x1, y1, 10], [x2, y1, 10], [x3, y1, 10], [x4, y1, 10], [x5, y
                  
                  [[x9, y2, 8], [x2, y4, 8], [x3, y1, 8],  [x6, y1, 8], [x7, y4, 8], [x10, y2, 8] , \
                  [x2, y5, 8], [x3, y3, 8], [x4, y7, 8], [x5, y7, 8], [x6, y3, 8], [x7, y5, 8], \
-                 [x4, y4, 8],[x5, y4, 8],]]
+                 [x4, y4, 8],[x5, y4, 8],] , \
+                 
+                 [[x1, y6, 10], [x1, y7, 10], [x8, y7, 10],  [x8, y6, 10], ]]
 
 
 # vies et score
@@ -108,10 +113,11 @@ def balle_deplacement():
         xx=-abs(xx)
         yy=-abs(yy)
         vies = vies-1
-        pyxel.text(raquette_x,raquette_y+10, 'Une vie de moins !', 7)
+        pyxel.text(100,200, 'Une vie de moins !', 7)
 
     # brique 
     for brique in brique_liste[level] :
+        ch = True
         bx = brique[0]
         by = brique[1]
         if y >= by + briquehauteur - r and y <= by + briquehauteur + r and x >= bx - r and x <= bx + briquelargeur + r \
@@ -143,7 +149,9 @@ def balle_deplacement():
                     velocity = 5
                     balle= False
             else  :
-                brique[2] -= 1
+                if ch == True :
+                    brique[2] -= 1
+                    ch = False
 
 
 # =========================================================
@@ -162,7 +170,7 @@ def update():
 
     if balle is False:
         x = raquette_x + 25
-        y = raquette_y - (r+1)
+        y = raquette_y - (r+1) 
     else:
         balle_deplacement()
 
@@ -176,8 +184,8 @@ def draw():
     pyxel.cls(0)
 
     # si le raquette possede des vies le jeu continue
-    if level == 5 :
-        pyxel.text(150,150, 'YOU WON', 7)
+    if level == 6 :
+        pyxel.text(150,150, 'VICTOIRE!', 7)
 
     elif vies > 0:    
         global cox, coy , brique_liste, brique_debut, o
