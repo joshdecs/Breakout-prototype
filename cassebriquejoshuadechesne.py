@@ -1,6 +1,3 @@
-# on rajoute bibliotheque random
-import pyxel, random
-
 # taille de la fenetre 128x128 pixels
 # ne pas modifier
 pyxel.init(300, 300, title="Josh")
@@ -24,6 +21,7 @@ briquelargeur= 20
 level = 0
 
 
+
 #brique
 x1=50
 x2=75
@@ -33,9 +31,15 @@ x5=150
 x6=175
 x7=200
 x8=225
+x9=65
+x10=210
 y1=60
 y2=100
 y3=140
+y4=80
+y5=120
+y6=40
+y7=160
 
 brique_liste = [ [[x1, y1, 10], [x2, y1, 10], [x3, y1, 10], [x4, y1, 10], [x5, y1, 10], [x6, y1, 10], [x7, y1, 10], [x8, y1, 10] , \
                  [x1, y2, 9], [x2, y2, 9], [x3, y2, 9], [x4, y2, 9], [x5, y2, 9], [x6, y2, 9], [x7, y2, 9], [x8, y2, 9] , \
@@ -47,7 +51,15 @@ brique_liste = [ [[x1, y1, 10], [x2, y1, 10], [x3, y1, 10], [x4, y1, 10], [x5, y
                  
                  [[x1, y1, 9], [x2, y1, 9], [x3, y1, 9], [x4, y1, 10], [x5, y1, 10], [x6, y1, 9], [x7, y1, 9], [x8, y1, 9] , \
                  [x1, y2, 9], [x2, y2, 9], [x3, y2, 10], [x4, y2, 8], [x5, y2, 8], [x6, y2, 10], [x7, y2, 9], [x8, y2, 9] , \
-                 [x1, y3, 9], [x2, y3, 9], [x3, y3, 9], [x4, y3, 10], [x5, y3, 10], [x6, y3, 9], [x7, y3, 9], [x8, y3, 9]]]
+                 [x1, y3, 9], [x2, y3, 9], [x3, y3, 9], [x4, y3, 10], [x5, y3, 10], [x6, y3, 9], [x7, y3, 9], [x8, y3, 9]] , \
+                 
+                 [[x1, y2, 9], [x2, y4, 8], [x3, y1, 9], [x4, y6, 8], [x5, y6, 8], [x6, y1, 9], [x7, y4, 8], [x8, y2, 9] , \
+                 [x2, y5, 8], [x3, y3, 9], [x4, y7, 8], [x5, y7, 8], [x6, y3, 9], [x7, y5, 8], [x8, y2, 9] ,\
+                 [x4, y2, 10], [x4, y4, 10], [x4, y5, 10], [x5, y2, 10], [x5, y5, 10], [x5, y4, 10],] , \
+                 
+                 [[x9, y2, 8], [x2, y4, 8], [x3, y1, 8],  [x6, y1, 8], [x7, y4, 8], [x10, y2, 8] , \
+                 [x2, y5, 8], [x3, y3, 8], [x4, y7, 8], [x5, y7, 8], [x6, y3, 8], [x7, y5, 8], \
+                 [x4, y4, 8],[x5, y4, 8],]]
 
 
 # vies et score
@@ -164,11 +176,11 @@ def draw():
     pyxel.cls(0)
 
     # si le raquette possede des vies le jeu continue
-    if level == 3 :
+    if level == 5 :
         pyxel.text(150,150, 'YOU WON', 7)
 
     elif vies > 0:    
-        global cox, coy , brique_liste, brique_debut
+        global cox, coy , brique_liste, brique_debut, o
         # raquette 
         pyxel.rect(raquette_x, raquette_y, 50, 20, 2)
         pyxel.tri(raquette_x, raquette_y, raquette_x, raquette_y+20, raquette_x-50,raquette_y+20,2) 
@@ -182,7 +194,9 @@ def draw():
         pyxel.text(250,20, 'Vies: %d' % vies, 7)
         pyxel.text(130,10, 'Niveau %d' % (level+1), 7)
         pyxel.text(130,20, 'Vitesse %d' % abs(xx), 7)
-
+        
+        if balle == False :
+            pyxel.text(40,200, 'Espace pour lancer fleches droite gauche pour deplacer' , 7)
 
         # briques
         for brique in brique_liste[level] :
