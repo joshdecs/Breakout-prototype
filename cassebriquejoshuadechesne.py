@@ -205,6 +205,8 @@ def draw():
         
         if balle == False :
             pyxel.text(40,200, 'Espace pour lancer fleches droite gauche pour deplacer' , 7)
+            pyxel.text(40,220, '5 niveaux disponibles !            3 types de briques !' , 10)
+
 
         # briques
         for brique in brique_liste[level] :
